@@ -1,4 +1,5 @@
-import * as actionTypes from '../../store/actions';
+import {increment, add, decrement, subtract, storeResult, deleteResult} from '../../store/actions/index';
+//we can also do import * as x from 'pathname then use x.propertyname everywhere
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import CounterControl from '../../components/CounterControl/CounterControl';
@@ -37,12 +38,13 @@ const mapStateToProps= state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch ({type: actionTypes.INCREMENT}),
-        onADDCounter: () => dispatch ({type: actionTypes.ADD, value: 5}),
-        onDecrementCounter: () => dispatch ({type: actionTypes.DECREMENT}),
-        onSubtractCounter: () => dispatch ({type: actionTypes.SUBTRACT, value: 5}),
-        onStoreResult: (result) => dispatch({type: actionTypes.STORE_RESULT, result: result}),
-        onDeleteResult: (id) => dispatch({type: actionTypes.DELETE_RESULT, resultElId: id})
+        //onIncrementCounter: () => dispatch ({type: actionTypes.INCREMENT}),
+        onIncrementCounter: () => dispatch (increment()),
+        onADDCounter: () => dispatch (add(5)),
+        onDecrementCounter: () => dispatch (decrement()),
+        onSubtractCounter: () => dispatch (subtract(5)),
+        onStoreResult: (result) => dispatch(storeResult(result)),
+        onDeleteResult: (id) => dispatch(deleteResult(id))
     };
 };
 
